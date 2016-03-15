@@ -1,0 +1,18 @@
+{
+  "name": "nslhome-cli",
+  "version": "1.0.0",
+  "description": "CLI commands for managing aspects of nslhome",
+  "main": "./lib/nslhome.js",
+  "author": "Nick Largent <nicklargent@gmail.com>",
+  "license": "MIT",
+  "bin": {
+    "nslhome": "nslhome.js",
+    "nslhome-provider": "nslhome-provider.js"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "nslhome-core": "nslhome/nslhome-core",
+    "nslhome-ozw-provider": "nslhome/nslhome-ozw-provider",
+    "nslhome-stapleshub-provider": "nslhome/nslhome-stapleshub-provider"
+  }
+}
