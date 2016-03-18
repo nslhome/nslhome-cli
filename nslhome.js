@@ -2,12 +2,13 @@
 
 var pkg = require('./package.json');
 var program = require('commander');
-const exec = require('child_process').exec;
+const child = require('child_process');
+var path = require('path');
 
 var find_forever = function(app, next) {
     var regex = new RegExp("\\[(\\d+)\\].*?" + app, "i");
 
-    exec('forever list', function(err, stdout) {
+    child.exec('forever list', function(err, stdout) {
         if (err)
             return next(err);
 
@@ -33,7 +34,7 @@ program
     .command('status')
     .description('lists currently running components')
     .action(function() {
-        exec('forever list', function(err, stdout) {
+        child.exec('forever list', function(err, stdout) {
             console.log("Running components:");
             var regex = /(nslhome[^\\]*?)\s+\d+/ig;
             var match = regex.exec(stdout);
@@ -53,7 +54,9 @@ program
             if (id !== null)
                 return console.log("Provider already running");
 
-            exec('forever start nslhome-provider.js ' + name, function(err, stdout) {
+            child.exec('forever start nslhome-provider.js ' + name, {cwd: __dirname}, function(err, stdout) {
+                if (err)
+                    console.error(err);
                 console.log(stdout);
             });
         });
@@ -68,7 +71,9 @@ program
             if (id === null)
                 return console.log("Provider not running");
 
-            exec('forever stop ' + id, function(err, stdout) {
+            child.exec('forever stop ' + id, function(err, stdout) {
+                if (err)
+                    console.error(err);
                 console.log(stdout);
             });
         });
