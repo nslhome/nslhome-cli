@@ -29,7 +29,14 @@ program
                 }
 
                 // require & run the module
-                require(provider.provider)(providerName);
+                try {
+                    // first try as a stand-alone module
+                    require(provider.provider)(providerName);
+                }
+                catch (e) {
+                    // next look for module in misc-providers
+                    require('nslhome-misc-providers')[provider.provider](providerName);
+                }
             });
         });
     });

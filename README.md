@@ -9,10 +9,12 @@ Command line tools for managing an nslhome environment.
 
 MongoDB and RabbitMQ configuration should be provided via the environment variables `NSLHOME_MONGO_URL` and `NSLHOME_RABBIT_URL`.
 
-You can optionally use the file `.nslhome.env` to store your configuration.
+You can optionally use the file `.nslhome.config` to store your configuration.
 ```
-export NSLHOME_MONGO_URL=mongodb://HOST/DATABASE
-export NSLHOME_RABBIT_URL=amqp://USERNAME:PASSWORD@HOST
+{
+    "NSLHOME_MONGO_URL": "mongodb://HOST/DATABASE",
+    "NSLHOME_RABBIT_URL": "amqp://USERNAME:PASSWORD@HOST"
+}
 ```
 
 Note: Usage of the various start/stop commands expects that 'forever' is installed globally.

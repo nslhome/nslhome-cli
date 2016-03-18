@@ -13,6 +13,7 @@
     "commander": "^2.9.0",
     "nslhome-core": "nslhome/nslhome-core",
     "nslhome-ozw-provider": "nslhome/nslhome-ozw-provider",
-    "nslhome-stapleshub-provider": "nslhome/nslhome-stapleshub-provider"
+    "nslhome-stapleshub-provider": "nslhome/nslhome-stapleshub-provider",
+    "nslhome-misc-providers": "nslhome/nslhome-misc-providers"
   }
 }
