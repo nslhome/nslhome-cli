@@ -25,6 +25,9 @@ var find_provider = function(provider, next) {
     find_forever("nslhome-provider\\.js " + provider, next);
 };
 
+var find_webserver = function(next) {
+    find_forever("webserver\\.js", next);
+};
 
 
 program
@@ -77,7 +80,40 @@ program
                 console.log(stdout);
             });
         });
+});
+
+program
+    .command('start-webserver')
+    .description('start nslhome webserver')
+    .action(function() {
+        console.log("Starting webserver with forever");
+        find_webserver(function(err, id) {
+            if (id !== null)
+                return console.log("Webserver already running");
+
+            child.exec('forever start webserver.js', {cwd: path.join(__dirname, 'node_modules', 'nslhome-webserver')}, function (err, stdout) {
+                if (err)
+                    console.error(err);
+                console.log(stdout);
+            });
+        });
     });
+
+program
+    .command('stop-webserver')
+    .description('stop nslhome webserver')
+    .action(function() {
+        console.log("Stopping webserver with forever");
+        find_webserver(function(err, id) {
+            child.exec('forever stop ' + id, function(err, stdout) {
+                if (err)
+                    console.error(err);
+                console.log(stdout);
+            });
+
+        });
+    });
+
 
 program.parse(process.argv);
 
