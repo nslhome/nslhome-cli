@@ -5,6 +5,7 @@
   "main": "./lib/nslhome.js",
   "author": "Nick Largent <nicklargent@gmail.com>",
   "license": "MIT",
+  "repository": "nslhome/nslhome-cli",
   "bin": {
     "nslhome": "nslhome.js",
     "nslhome-provider": "nslhome-provider.js"
@@ -14,6 +15,7 @@
     "nslhome-core": "nslhome/nslhome-core",
     "nslhome-webserver": "nslhome/nslhome-webserver",
     "nslhome-ozw-provider": "nslhome/nslhome-ozw-provider",
+    "nslhome-hue-provider": "nslhome/nslhome-hue-provider",
     "nslhome-stapleshub-provider": "nslhome/nslhome-stapleshub-provider",
     "nslhome-misc-providers": "nslhome/nslhome-misc-providers"
   }
